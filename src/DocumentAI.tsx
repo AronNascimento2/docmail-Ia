@@ -106,11 +106,11 @@ export default function DocumentAIApp() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#eef3ff] via-[#f7f9fc] to-[#eef2f7]">
-      <div className="grid min-h-screen grid-cols-12 gap-6 p-4 lg:p-6">
+    <div className=" bg-gradient-to-br from-[#eef3ff] via-[#f7f9fc] to-[#eef2f7]">
+      <div className="grid h-full grid-cols-12 gap-6 p-4 lg:p-6">
         {/* Sidebar */}
-        <aside className="col-span-12 lg:col-span-3 xl:col-span-2">
-          <div className="sticky top-4 flex h-full min-h-[calc(100vh-2rem)] flex-col rounded-[28px] border border-white/50 bg-[#16203D] p-6 text-white shadow-[0_20px_80px_rgba(22,32,61,0.35)]">
+        <aside className="col-span-12 h-full min-h-0 lg:col-span-3 xl:col-span-2">
+          <div className="flex h-full min-h-0 flex-col rounded-[28px] border border-white/50 bg-[#16203D] p-6 text-white shadow-[0_20px_80px_rgba(22,32,61,0.35)]">
             <div className="mb-8 flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#3167FF] shadow-lg shadow-blue-900/30">
                 <Brain size={22} />
@@ -144,7 +144,7 @@ export default function DocumentAIApp() {
               ))}
             </nav>
 
-            <div className="mt-auto rounded-[24px] border border-white/10 bg-white/5 p-4">
+            <div className="mt-auto  rounded-[24px] border border-white/10 bg-white/5 p-4">
               <div className="mb-3 flex items-center gap-2">
                 <Sparkles size={16} className="text-blue-300" />
                 <p className="text-sm font-medium">IA em execução</p>
@@ -153,8 +153,8 @@ export default function DocumentAIApp() {
                 Extração automática de anexos, leitura contextual de e-mails e
                 detecção de pendências.
               </p>
-              <Button className="mt-4 w-full rounded-xl bg-[#3167FF] hover:bg-[#2759ec]">
-                <UploadCloud size={16} className="mr-2" />
+              <Button className="mt-4  rounded-xl text-[12px] bg-[#3167FF] hover:bg-[#2759ec]">
+                <UploadCloud size={8} className="" />
                 Enviar documentos
               </Button>
             </div>
@@ -162,7 +162,7 @@ export default function DocumentAIApp() {
         </aside>
 
         {/* Main */}
-        <main className="col-span-12 flex flex-col gap-6 lg:col-span-9 xl:col-span-10">
+        <main className="col-span-12 grid h-full min-h-0 grid-rows-[auto_auto_1fr] gap-6 lg:col-span-9 xl:col-span-10">
           {/* Top Header */}
           <div className="flex flex-col gap-4 rounded-[28px] border border-white/60 bg-white/80 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl lg:flex-row lg:items-center lg:justify-between">
             <div>
@@ -233,11 +233,11 @@ export default function DocumentAIApp() {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {metrics.map((item) => {
+                  {metrics.map((item, index) => {
                     const Icon = item.icon;
                     return (
                       <div
-                        key={item.title}
+                        key={`${item.title}-${index}`}
                         className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md"
                       >
                         <div className="flex items-center justify-between">
@@ -261,12 +261,12 @@ export default function DocumentAIApp() {
           </Card>
 
           {/* Content area */}
-          <div className="grid gap-6 xl:grid-cols-[1.1fr_.9fr]">
+          <div className="grid min-h-0 gap-6 xl:grid-cols-[1.1fr_.9fr]">
             {/* Left column */}
-            <div className="flex flex-col gap-6">
+            <div className="grid min-h-0 gap-6 xl:grid-rows-[0.8fr_1.2fr]">
               {/* Alerts */}
-              <Card className="rounded-[28px] border-0 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-                <CardContent className="p-6">
+              <Card className="min-h-0 overflow-hidden rounded-[28px] border-0 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                <CardContent className="flex h-full min-h-0 flex-col p-6">
                   <div className="mb-5 flex items-center justify-between">
                     <div>
                       <h3 className="flex items-center gap-2 text-lg font-semibold text-[#16203D]">
@@ -282,10 +282,10 @@ export default function DocumentAIApp() {
                     </span>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="min-h-0 space-y-3 overflow-y-auto pr-2">
                     {lateEmails.map((e) => (
                       <div
-                        key={e.id}
+                        key={`${e.id}-${e.sender}`}
                         className="flex items-start justify-between rounded-2xl border border-red-100 bg-red-50/80 p-4"
                       >
                         <div>
@@ -310,8 +310,8 @@ export default function DocumentAIApp() {
               </Card>
 
               {/* Email list */}
-              <Card className="rounded-[28px] border-0 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-                <CardContent className="p-6">
+              <Card className="min-h-0 overflow-hidden rounded-[28px] border-0 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                <CardContent className="flex h-full min-h-0 flex-col p-6">
                   <div className="mb-5 flex items-center justify-between">
                     <div>
                       <h3 className="flex items-center gap-2 text-lg font-semibold text-[#16203D]">
@@ -327,10 +327,10 @@ export default function DocumentAIApp() {
                     </Button>
                   </div>
 
-                  <div className="space-y-4">
-                    {emails.map((email) => (
+                  <div className="min-h-0 space-y-4 overflow-y-auto pr-2">
+                    {emails.map((email, index) => (
                       <div
-                        key={email.id}
+                        key={`${email.id}-${email.sender}-${index}`}
                         className="flex flex-col gap-4 rounded-2xl border border-slate-100 bg-slate-50/80 p-4 transition hover:border-[#3167FF]/20 hover:bg-white md:flex-row md:items-center md:justify-between"
                       >
                         <div className="flex items-center gap-4">
@@ -392,10 +392,10 @@ export default function DocumentAIApp() {
             </div>
 
             {/* Right column */}
-            <div className="flex flex-col gap-6">
+            <div className="grid min-h-0 gap-6 xl:grid-rows-[1fr_auto]">
               {/* Documents */}
-              <Card className="rounded-[28px] border-0 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-                <CardContent className="p-6">
+              <Card className="min-h-0 overflow-hidden rounded-[28px] border-0 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+                <CardContent className="flex h-full min-h-0 flex-col p-6">
                   <div className="mb-5">
                     <h3 className="text-lg font-semibold text-[#16203D]">
                       Documentos vinculados
@@ -405,7 +405,7 @@ export default function DocumentAIApp() {
                     </p>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="min-h-0 space-y-4 overflow-y-auto pr-2">
                     {documents.map((doc) => (
                       <div
                         key={doc.id}
